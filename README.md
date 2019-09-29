@@ -50,6 +50,7 @@ Function Invoke-Script {
     npm install
 }
 
+# You can omit -AlternativePath
 Start-Cli -Title 'Install JS APP' -Filename 'package.json' -AlternativePath '..' 
 
 ```
