@@ -1,6 +1,4 @@
-# cli-tools-powershell
-
-Equilaterus CLI-Tools for PowerShell.
+# Equilaterus CLI-Tools for Powershell
 
 * Effortless Powershell Scripting.
 
