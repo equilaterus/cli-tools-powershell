@@ -1,3 +1,7 @@
+# Equilaterus CLI-Tools for Powersheel
+# MIT License
+# https://github.com/equilaterus/cli-tools-powershell
+
 Push-Location .
 Push-Location -Path $PSScriptRoot
 
