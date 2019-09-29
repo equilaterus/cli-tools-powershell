@@ -8,7 +8,7 @@ Equilaterus CLI-Tools for PowerShell.
 
 * Great to write CLI utils for your projects.
 
-* [Multiplatform](https://github.com/PowerShell/PowerShell)!
+* It is [Multiplatform](https://github.com/PowerShell/PowerShell)!
 
 ## Instructions
 
