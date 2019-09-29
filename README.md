@@ -30,7 +30,7 @@ Start-Cli -Title 'My Title' -Filename 'FileToSearch'
 
 3. Run your script!
 
-## Start Cli params
+## Start-Cli params
 
 * **Title**: short text describing your task. 
 * **Filename**: The tool will search for this file to start the execution.
