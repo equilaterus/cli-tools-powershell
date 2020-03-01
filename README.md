@@ -1,12 +1,14 @@
 # Equilaterus CLI-Tools for Powershell
 
-* Effortless Powershell Scripting.
+Effortless Powershell Scripting!
 
-* Errors do not close command line  windows.
+* Automatically handles the start location path avoiding errors when the script is located on subfolders or when it's called from different paths.
 
-* Great to write CLI utils for your projects.
+* By default errors do not close command line windows, so you can display better feedback to your users.
 
-* It is [Multiplatform](https://github.com/PowerShell/PowerShell)!
+* Great to write CLI utils for your projects without needing to write additional code.
+
+* One script to rule them all: Powershell is [Multiplatform](https://github.com/PowerShell/PowerShell)!
 
 ## Instructions
 
@@ -32,17 +34,8 @@
 
 3. Run your script!
 
-## Start-Cli params
 
-* **Title**: short text describing your task. 
-* **Filename**: The tool will search for this file to start the execution.
-* **AlternativePath**: by default it is '..'. If the **Filename** wasn't found the script will lockup in this path.
-
-  > It's common to create your scripts under a folder in your repo (usually *utils/*, *scripts/* or *tools*), *Filename* and *AlternativePath* will grant that the script is always executed in the desired folder.
-
-*
-
-## Example
+## Examples
 
 Suppose that your util files are located under *utils/* folder, the correct script to *Run npm install* will be something like this:
 
@@ -53,7 +46,34 @@ Function Invoke-Script {
     npm install
 }
 
-# You can omit -AlternativePath
+# You can omit -AlternativePath as '..' is its default value
 Start-Cli -Title 'Install JS APP' -Filename 'package.json' -AlternativePath '..' 
 
 ```
+
+### More examples
+
+* Create a script to [Install Ruby Gems and Bundler](https://github.com/equilaterus/wikilaterus/blob/master/_utils/install-site.ps1)
+
+* Create a script to [Run a Docker Compose](https://github.com/equilaterus/base-docker-images/blob/master/utils/run-prod.ps1)
+
+> **Summarizing:** Define your script to automate any given task. Add *Filename* parameter so that Equilaterus CLI knows exactly where the execution should start.
+
+
+## Start-Cli params
+
+* **Title**: short text describing your task. 
+* **Filename**: Equilaterus CLI will lookup for this file to set the location where the script execution should start.
+* **AlternativePath**: by default it is *'..'*. If the **Filename** wasn't found in the current location, the script will loockup in this path.
+
+  > It's common to create your scripts under a folder in your repo (usually *utils/*, *scripts/* or *tools*), *Filename* and *AlternativePath* will grant that the script is always executed in the desired folder no matter where the execution started or where your script is located.
+
+* **MaxPopsOnExit**: by default it is 10. If you are doing additional *push*'s to different locations you can adjust this parameter to ensure that your script will end on the original location.
+
+* **SkipIntro**: by default is false. Hides the intro information.
+
+* **SkipLicense**: by default is false. Hides the license information that appears on the script execution.
+
+## More info
+
+* Installing and using Powershell: [See Wikilaterus entry](https://equilaterus.github.io/wikilaterus/wiki/Programming-Powershell.html) 
