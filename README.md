@@ -10,21 +10,25 @@
 
 ## Instructions
 
-1. Download **_EquilaterusCLI.ps1**.
+1. Download **_EquilaterusCLI.ps1**. You can download the latest stable version using the following PowerShell command:
+
+   ```powershell
+   Invoke-WebRequest -Uri https://raw.githubusercontent.com/equilaterus/cli-tools-powershell/master/_EquilaterusCLI.ps1 -OutFile '_EquilaterusCLI.ps1'
+   ```
 
 2. Under the same folder as **_EquilaterusCLI.ps1**, create a ps1 file using the following snippet.
 
-```powershell
-. $PSScriptRoot/_EquilaterusCLI.ps1
-
-Function Invoke-Script {
-    # Add your commands here
-    # ...
-}
-
-Start-Cli -Title 'My Title' -Filename 'FileToSearch'
-
-```
+   ```powershell
+   . $PSScriptRoot/_EquilaterusCLI.ps1
+   
+   Function Invoke-Script {
+       # Add your commands here
+       # ...
+   }
+   
+   Start-Cli -Title 'My Title' -Filename 'FileToSearch'
+   
+   ```
 
 3. Run your script!
 
@@ -34,8 +38,9 @@ Start-Cli -Title 'My Title' -Filename 'FileToSearch'
 * **Filename**: The tool will search for this file to start the execution.
 * **AlternativePath**: by default it is '..'. If the **Filename** wasn't found the script will lockup in this path.
 
-> It's common to create your scripts under a folder in your repo (usually *utils/*, *scripts/* or *tools*), *Filename* and *AlternativePath* will grant that the script is always executed in the desired folder.
+  > It's common to create your scripts under a folder in your repo (usually *utils/*, *scripts/* or *tools*), *Filename* and *AlternativePath* will grant that the script is always executed in the desired folder.
 
+*
 
 ## Example
 
