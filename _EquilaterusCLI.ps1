@@ -6,9 +6,11 @@ Push-Location .
 Push-Location -Path $PSScriptRoot
 
 Function Pop-Cli {
-    # Just in case that multiple Pushes
-    # Pop up to 10 times
-    while ($i -lt 10) {            
+    param (
+        [Parameter(Mandatory=$true)][int] $MaxPops
+    )
+
+    while ($i -lt $MaxPops) {
         (Pop-Location)
         $i++
     }
@@ -30,17 +32,24 @@ Function Write-Cli-Step {
 
 Function Write-Cli-Intro {
     param (
-        [Parameter(Mandatory=$true)][string] $Title
+        [Parameter(Mandatory=$true)][string] $Title,
+        [Parameter(Mandatory=$true)][bool] $SkipLicense
     )
-    Write-Host 'MIT License'
-    Write-Host 'Equilaterus CLI-Tools for PowerShell'
-    Write-Cli-Line
+    if (!$SkipLicense) {
+        Write-Host 'MIT License'
+        Write-Host 'Equilaterus CLI-Tools v1 for PowerShell'    
+        Write-Cli-Line
+    }
     Write-Host
     Write-Host $Title
 }
 
 Function Exit-Cli {
-    Pop-Cli
+    param (
+        [Parameter(Mandatory=$true)][int] $MaxPops
+    )
+
+    Pop-Cli -MaxPops $MaxPops
     Write-Cli-Line
     Write-Host "`nPress any key to quit..."
     [void][System.Console]::ReadKey($true)
@@ -69,11 +78,16 @@ Function Start-Cli {
     param (
         [Parameter(Mandatory=$true)][string] $Title,
         [Parameter(Mandatory=$true)][string] $Filename,
-        $AlternativePath = '..'
+        $AlternativePath = '..',
+        $MaxPopsOnExit = 10,
+        $SkipIntro = $false,
+        $SkipLicense = $false
     )
 
     try {
-        Write-Cli-Intro -Title $Title
+        if (!$SkipIntro) {
+            Write-Cli-Intro -Title $Title -SkipLicense $SkipLicense
+        }
 
         Write-Cli-Step -Step 'Preparing CLI'
         Set-Cli-Path -Filename $Filename -AlternativePath $AlternativePath
@@ -83,6 +97,6 @@ Function Start-Cli {
     } catch {
         Write-Error $_.Exception.ToString()
     } finally {
-        Exit-Cli
-    }    
+        Exit-Cli -MaxPops $MaxPopsOnExit
+    }
 }
