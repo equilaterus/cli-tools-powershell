@@ -1,4 +1,5 @@
 # Equilaterus CLI-Tools for Powershell
+# v1.0.0
 # MIT License
 # https://github.com/equilaterus/cli-tools-powershell
 
