@@ -10,13 +10,13 @@
 
 ## Instructions
 
-1. Download **_EquilaterusCLI.ps1**. You can download the latest stable version using the following PowerShell command:
+1. You can download the latest stable version using the following PowerShell command:
 
    ```powershell
    Invoke-WebRequest -Uri https://raw.githubusercontent.com/equilaterus/cli-tools-powershell/master/_EquilaterusCLI.ps1 -OutFile '_EquilaterusCLI.ps1'
    ```
 
-2. Under the same folder as **_EquilaterusCLI.ps1**, create a ps1 file using the following snippet.
+2. Under the same folder where **_EquilaterusCLI.ps1** was downloaded, create a ps1 file using the following snippet.
 
    ```powershell
    . $PSScriptRoot/_EquilaterusCLI.ps1
