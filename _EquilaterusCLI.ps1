@@ -4,7 +4,7 @@
 # https://github.com/equilaterus/cli-tools-powershell
 
 Push-Location .
-Push-Location -Path $PSScriptRoot
+Push-Location -LiteralPath $PSScriptRoot
 
 Function Pop-Cli {
     param (
