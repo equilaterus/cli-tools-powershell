@@ -101,3 +101,26 @@ Function Start-Cli {
         Exit-Cli -MaxPops $MaxPopsOnExit
     }
 }
+
+
+# Additional utilities
+
+# Reads a Json file on a given path and returns an object with its content deserialized
+function Read-Json-File {
+    param(
+        [Parameter(Mandatory=$true)][string] $Path
+    )
+
+    $result = Get-Content -Raw -Path $Path -ErrorVariable +err -ErrorAction 0
+    if ($err) {
+        return $false
+    } 
+
+    # ErrorAction doesn't work consistently for ConvertFrom-Json
+    try {
+        $json = ConvertFrom-Json -InputObject $result
+        return $json
+    } catch {
+        return $false
+    }
+}
