@@ -60,6 +60,39 @@ Start-Cli -Title 'Install JS APP' -Filename 'package.json' -AlternativePath '..'
 > **Summarizing:** Define your script to automate any given task. Add *Filename* parameter so that Equilaterus CLI knows exactly where the execution should start.
 
 
+## Included utilities
+
+### Read-Json-File
+
+Given a path loads a file as a Json into an object.
+
+```powershell
+### JsonFile.json
+[
+  {
+    "Name": "Hello",
+    "Active": true
+  },
+  {
+    "Name": "World",
+    "Active": false
+  }
+]
+
+### SampleReadJson.ps1
+. $PSScriptRoot/_EquilaterusCLI.ps1
+
+Function Invoke-Script {
+    $users = Read-Json-File -Path './JsonFile.json'
+    foreach ($user in $users) {
+        Write-Host $user.Name
+        Write-Host $user.Active
+    }
+}
+
+Start-Cli -Title 'SampleReadJson' -Filename 'JsonFile.json'
+```
+
 ## Start-Cli params
 
 * **Title**: short text describing your task. 
